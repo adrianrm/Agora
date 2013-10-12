@@ -9,6 +9,9 @@
   "mailsenderApp": {"module": "./lib/mailsender"},
   "mailarchiveApp": {"module": "./lib/mailarchive"},
   "wikiApp": {"module": "./lib/wiki"},
+  
+  "testApp": {"module": "./lib/testapp"},
+
 
   "groupsAndMembersAPI": {"module": "./lib/groupsAndMembers/groupsAndMembersAPI"},
   "groupsAPI": {"module": "./lib/groups/groupsAPI"},

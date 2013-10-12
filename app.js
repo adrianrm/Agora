@@ -11,8 +11,9 @@ function useApp(parent, url, factory) {
     if (!(/\/$/).test(req.url)) { return res.redirect(req.url + '/'); }
     next();
   }
-
+  appLogger.debug("Use app: "+url);
   var child = factory(express());
+  appLogger.debug(String(child));
   child.locals({pretty: true});
   parent.get('/' + url, ensureRequestedUrlEndsWithSlash);
   parent.use('/' + url + '/', child);
@@ -82,6 +83,9 @@ module.exports = {
     useApp(app, 'auth', conf.get('beans').get('authenticationApp'));
     useApp(app, 'mailarchive', conf.get('beans').get('mailarchiveApp'));
     useApp(app, 'wiki', conf.get('beans').get('wikiApp'));
+    
+    //!arChange
+    useApp(app, 'testapp', conf.get('beans').get('testApp'));
 
     app.configure('development', function () {
       // Handle 404
